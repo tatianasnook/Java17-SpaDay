@@ -1,25 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<link rel="stylesheet" th:href="@{/styles.css}"/>
 <head>
     <meta charset="UTF-8">
     <title></title>
 </head>
 <body>
 <form method="post" action="/user">
-    <label>Username:
-        <input type= "text" name="username"/>
-    </label>
-    <label>Email:
-        <input type= "email" name="email"/>
-    </label>
-    <label>Password:
-        <input type= "password" name="password"/>
-    </label>
-    <label>Verify password:
-        <input type= "password" name="verify"/>
-    </label>
-    <input type="submit" value="Submit"/>
+    <div>
+        <label>Username:
+            <input type= "text" th:field="*{user.username}"/>
+        </label>
+        <p class="error" th:errors="*{user.username}"></p>
+    </div>
+
+    <div>
+        <label>Email:
+            <input th:field="*{user.email}"/>
+        </label>
+        <p class="error" th:errors="*{user.email}"></p>
+    </div>
+
+    <div>
+        <label>Password:
+            <input type= "password" th:field="*{user.password}"/>
+        </label>
+        <p class="error" th:errors="*{user.password}"></p>
+    </div>
+
+    <div>
+        <label>Verify password:
+            <input type= "password" th:field="*{user.verify}"/>
+        </label>
+        <p class="error" th:errors="*{user.verify}"></p>
+    </div>
+
+    <div>
+        <input type="submit" value="Submit"/>
+    </div>
 </form>
-<p th:if="${error}" th:text="${error}" ></p>
 </body>
 </html>
